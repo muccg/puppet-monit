@@ -10,8 +10,8 @@ set eventqueue
     slots 5
     
 set mail-format {
-      from: monit@<%= @hostname %>
-   subject: $SERVICE $EVENT at $DATE
+      from: root@localhost
+   subject: $SERVICE $EVENT at $DATE on <%= @hostname %>
    message: Monit $ACTION $SERVICE at $DATE on <%= @hostname %>: $DESCRIPTION.
             Yours sincerely,
             monit
