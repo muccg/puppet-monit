@@ -10,9 +10,8 @@ class monit ($alert = 'root@localhost') {
 
   service {'monit':
     ensure   => running,
-    provider => init;
+    provider => init,
     require  => [ File[$config], Package['monit'] ],
-    require  => Package['monit'],
   }
 
   file { $configdir:
@@ -32,17 +31,4 @@ class monit ($alert = 'root@localhost') {
     notify  => Service['monit'],
   }
 
-}
-
-
-define monit::package() {
-
-  file {"monit ${name}.conf":
-    ensure   => present,
-    path     => "${monit::configdir}/${name}.conf",
-    content  => template("monit/${name}.conf.erb"),
-    group    => root,
-    notify   => Service['monit'],
-    mode     => '0600';
-  }
 }
