@@ -1,4 +1,4 @@
-check process celeryd with pidfile "/usr/local/python/ccgapps/run/celeryd.pid"
+check process celeryd with pidfile /var/run/celery/celeryd.pid
    start program  "/etc/init.d/celeryd start"
    stop program  "/etc/init.d/celeryd stop"
    if 5 restarts within 5 cycles then timeout
