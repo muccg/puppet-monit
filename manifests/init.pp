@@ -1,5 +1,5 @@
 #
-class monit ($alert = undef) {
+class monit ($alert = 'root@localhost') {
   $configdir = '/etc/monit.d'
   $template = 'monit/monitrc.erb'
   $config = '/etc/monit.conf'
