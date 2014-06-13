@@ -15,7 +15,7 @@ class monit ($alert = 'root@localhost') {
   }
 
   file { $configdir:
-    ensure => directory;
+    ensure => directory,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
