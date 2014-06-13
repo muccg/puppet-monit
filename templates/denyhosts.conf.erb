@@ -1,0 +1,7 @@
+check process denyhosts with pidfile /var/lock/subsys/denyhosts
+   start program  "/etc/init.d/denyhosts start"
+   stop program  "/etc/init.d/denyhosts stop"
+
+check file config path /usr/share/denyhosts/denyhosts.cfg
+     if changed sha1 checksum 
+             then exec "/etc/init.d/denyhosts restart"

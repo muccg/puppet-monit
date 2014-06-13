@@ -1,0 +1,22 @@
+set daemon  120
+set httpd port 2812 and use address localhost
+    allow localhost   # Allow localhost to connect
+
+set alert <%= @alert %>
+set logfile syslog facility log_daemon
+set mailserver localhost
+set eventqueue
+    basedir /var/monit
+    slots 5
+    
+set mail-format {
+      from: monit@<%= @hostname %>
+   subject: $SERVICE $EVENT at $DATE
+   message: Monit $ACTION $SERVICE at $DATE on <%= @hostname %>: $DESCRIPTION.
+            Yours sincerely,
+            monit
+}
+
+check system <%= @hostname %>
+
+include /etc/monit.d/*

@@ -1,0 +1,5 @@
+check process httpd with pidfile /etc/httpd/run/httpd.pid
+   start program  "/sbin/service httpd start"
+   stop program  "/sbin/service httpd stop"
+   if failed port 80 protocol http then restart
+   if 5 restarts within 5 cycles then timeout
